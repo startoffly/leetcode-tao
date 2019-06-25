@@ -2,6 +2,10 @@ package com.xinmove.calculation;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @ClassName c1
  * @Descripption TODO
@@ -35,48 +39,87 @@ public class c2 {
     }
 
     @Test
-    public void test() {
-        //342
-        ListNode l1_1 = new ListNode(2);
-        ListNode l1_2 = new ListNode(4);
-        l1_1.next = l1_2;
-        ListNode l1_3 = new ListNode(3);
-        l1_2.next = l1_3;
+    public void runSomeTest(){
+        System.out.println("------普通测试------");
+        int[] l1 = {2,4,3};//数字342
+        int[] l2 = {5,6,4};//数字465
+        test(l1,l2);
+        System.out.println("------非等------");
+        l1 = new int[]{2,9,3,5};//数字5392
+        l2 = new int[]{5,6,4};//数字465
+        test(l1,l2);
+        System.out.println("------单零------");
+        l1 = new int[]{2,9,3,5};//数字5392
+        l2 = new int[]{0};
+        test(l1,l2);
+        System.out.println("------双进位------");
+        l1 = new int[]{1,9};//数字91
+        l2 = new int[]{9};//9
+        test(l1,l2);
 
-        //465
-        ListNode l2_1 = new ListNode(5);
-        ListNode l2_2 = new ListNode(6);
-        l2_1.next = l2_2;
-        ListNode l2_3 = new ListNode(4);
-        l2_2.next = l2_3;
-
-        ListNode end = addTwoNumbers(l1_1, l2_1);
-        while(end != null) {
-            System.out.print(end.val + " ");
-            end = end.next;
-        }
 
 
     }
 
+//    @Test
+    public void test(int[] l1,int[] l2) {
+//        int[] l1 = {2,4,3};//数字342
+//        int[] l2 = {5,6,4};//465
+
+        ListNode l1Node = getNodes(l1);
+        ListNode l2Node = getNodes(l2);
+
+        StringBuilder outStr = new StringBuilder();
+        outStr.append("代码意义：");
+        for (int i = l1.length-1; i >= 0; i--) {
+            outStr.append(l1[i]);
+        }
+        outStr.append(" + ");
+        for (int i = l2.length-1; i >= 0; i--) {
+            outStr.append(l2[i]);
+        }
+        outStr.append(" = ");
+
+        ListNode result = addTwoNumbers(l1Node, l2Node);
+        System.out.print("输出结果为：");
+        List<Integer> ints = new ArrayList<>();
+        while (result != null) {
+            ints.add(result.val);
+            System.out.print(result.val + " ");
+            result = result.next;
+        }
+        System.out.println();
+        Collections.reverse(ints);//倒转
+        ints.forEach(i-> outStr.append(i));
+        System.out.println(outStr);
+    }
+
+    /**
+     * @Description 题解运算实体
+     * @param l1
+     * @param l2
+     * @Return com.xinmove.calculation.c2.ListNode
+     * @Author cwt
+     * @Date 2019/6/25 12:44
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int add = 0;
         ListNode result = new ListNode((l1.val + l2.val) % 10);
         ListNode nowListNode = result;
         ListNode nextListNode;
-        boolean flg =true;
+        boolean flg = true;
         int num1;
         int num2;
         int sum;
         while (flg) {
-            num1 = l1!=null?l1.val:0;
-            num2 = l2!=null?l2.val:0;
+            num1 = l1 != null ? l1.val : 0;
+            num2 = l2 != null ? l2.val : 0;
             sum = num1 + num2 + add;
             nowListNode.val = sum % 10;
-            add = sum/ 10;//下次进位
-            l1 = l1!=null?l1.next:null;
-            l2 = l2!=null?l2.next:null;
-            flg = add !=0||l1 != null || l2 != null;
+            add = sum / 10;//下次进位
+            l1 = l1 != null ? l1.next : null;
+            l2 = l2 != null ? l2.next : null;
+            flg = add != 0 || l1 != null || l2 != null;
             if (flg) {//若下一位有运算需要
 
                 nextListNode = new ListNode(0);//下一位对象
@@ -87,4 +130,34 @@ public class c2 {
         return result;
     }
 
+    @Test
+    public void cTest() {
+
+        ListNode result = getNodes(new int[]{1, 2, 3});
+        while (result != null) {
+            System.out.print(result.val + " ");
+            result = result.next;
+        }
+    }
+
+    /**
+     * @param a
+     * @Description 生成简易链表并返回第一个元素
+     * @Return com.xinmove.calculation.c2.ListNode
+     * @Author cwt
+     * @Date 2019/6/25 12:30
+     */
+    public ListNode getNodes(int[] a) {
+
+        ListNode result = a.length > 0 ? new ListNode(a[0]) : null;
+        ListNode next = null;
+        ListNode nowNode = result;
+        for (int i = 0; i < a.length; i++) {
+            next = i + 1 < a.length ? new ListNode(0) : null;
+            nowNode.next = next;
+            nowNode.val = a[i];
+            nowNode = next;
+        }
+        return result;
+    }
 }
