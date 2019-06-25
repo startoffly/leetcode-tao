@@ -1,8 +1,8 @@
 package com.xinmove.calculation;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import org.junit.Test;
+
+import java.util.*;
 
 /**
  * @ClassName C4
@@ -34,17 +34,103 @@ import java.util.List;
  **/
 public class C4 {
 
-
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        List<Integer> list = new LinkedList(Arrays.asList(nums1));
-
-        int index = 0;
-        for (int i = 0; i <nums1.length; i++) {
-
-        }
+    @Test
+    public void test() {
+        int[] nums1 = {1, 3};
+        int[] nums2 = {2};
+//        System.out.println(findMedianSortedArrays(nums1,nums2));
 
 
-        return 0;
+        System.out.println(findMedianSortedArrays2(nums1, nums2));
     }
 
+    //偷懒
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        List<Integer> list = new ArrayList();
+        for (int i = 0; i < nums1.length; i++) {
+            list.add(nums1[i]);
+        }
+        for (int i = 0; i < nums2.length; i++) {
+            list.add(nums2[i]);
+        }
+
+        Collections.sort(list);
+        int size = list.size();
+        double r = 0.0;
+        if (list.size() % 2 == 1) {//单数
+            r = list.get(size / 2);
+        } else {//偶数
+            r = (list.get(size / 2) + list.get(size / 2 - 1)) / 2.0;
+        }
+        return r;
+    }
+
+
+    //超时间
+    public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
+        LinkedList<Integer> list = new LinkedList<>();
+        int lastIndex = 0;
+        for (int i = 0; i < nums1.length; i++) {
+            list.add(nums1[i]);
+        }
+        for (int i = 0; i < nums2.length; i++) {
+            lastIndex = listIndex(list, nums2[i], lastIndex);
+            list.add(lastIndex, nums2[i]);//插入适宜的位置
+        }
+        int size = list.size();
+        double r = 0.0;
+        if (size % 2 == 1) {//单数
+            r = list.get(size / 2);
+        } else {//偶数
+            r = (list.get(size / 2) + list.get(size / 2 - 1)) / 2.0;
+        }
+        return r;
+    }
+
+    /**
+     * 获取数字插入的位置
+     *
+     * @param list
+     * @param a
+     * @param lastIndex
+     * @return
+     */
+    private int listIndex(List<Integer> list, int a, int lastIndex) {
+        int index = 0;
+        int size = list.size();
+        for (int i = lastIndex; i < size; i++) {
+            if (a > list.get(i)) {
+                index = i + 1;
+            }
+        }
+
+        return index;
+    }
+
+    public double findMedianSortedArrays3(int[] nums1, int[] nums2) {
+
+        int index = 0;
+        int min;
+        int sumlength = nums1.length+nums1.length;
+        if (nums1.length <= 2 & nums2.length <= 2) {
+            int[] copy = new int[sumlength];
+
+            for (int i = 0; i < nums1.length; i++) {
+                copy[index++] = nums1[i];
+            }
+            for (int i = 0; i < nums2.length; i++) {
+                min = nums1[i];
+                for (int j = 0; j < sumlength; j++) {
+//                    if (min==null)
+
+                    if (min < copy[j]) {
+                        min += copy[j];
+                        copy[j] = min - copy[j];
+                        min -= copy[j];
+                    }
+                }
+            }
+        }
+        return index;
+    }
 }
