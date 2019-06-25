@@ -3,7 +3,7 @@ package com.xinmove.calculation;
 import org.junit.Test;
 
 /**
- * @ClassName c1
+ * @ClassName C1
  * @Descripption TODO
  * @Author CTW
  * @Date 2019/6/25 12:34
@@ -24,7 +24,7 @@ import org.junit.Test;
  * 链接：https://leetcode-cn.com/problems/two-sum
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  **/
-public class c1 {
+public class C1 {
 
     @Test
     public void test(){

@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @ClassName c1
+ * @ClassName C1
  * @Descripption TODO
  * @Author CTW
  * @Date 2019/6/25 12:34
@@ -27,7 +27,7 @@ import java.util.List;
  * 链接：https://leetcode-cn.com/problems/add-two-numbers
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  **/
-public class c2 {
+public class C2 {
 
     public class ListNode {
         int val;
@@ -98,7 +98,7 @@ public class c2 {
      * @Description 题解运算实体
      * @param l1
      * @param l2
-     * @Return com.xinmove.calculation.c2.ListNode
+     * @Return com.xinmove.calculation.C2.ListNode
      * @Author cwt
      * @Date 2019/6/25 12:44
      */
@@ -143,7 +143,7 @@ public class c2 {
     /**
      * @param a
      * @Description 生成简易链表并返回第一个元素
-     * @Return com.xinmove.calculation.c2.ListNode
+     * @Return com.xinmove.calculation.C2.ListNode
      * @Author cwt
      * @Date 2019/6/25 12:30
      */
