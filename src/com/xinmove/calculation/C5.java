@@ -24,14 +24,49 @@ public class C5 {
 
     @Test
     public void test(){
-//        String str = "asdqwertyytrew";
-//        System.out.println(longestPalindrome(str));
-//        str = "asgfdyfwqasdfghjhgfds";
-//        System.out.println(longestPalindrome(str));
-        String str = "asssdssaasdassss";
-        System.out.println(longestPalindrome(str));
+        String str = "asdqwertyytrew";
+        System.out.println(longestPalindrome2(str));
+        str = "asgfdyfwqasdfghjhgfds";
+        System.out.println(longestPalindrome2(str));
+        str = "asssdssaasdassss";
+        System.out.println(longestPalindrome2(str));
     }
 
+    /**
+     * @Description 优化版
+     * @param String
+     * @Author cwt
+     * @Date 2019/6/26 19:59
+     */
+    public String longestPalindrome2(String s) {
+        int begin = 0;//切割起始坐标
+        int end = 0;//切割end坐标
+        int length = s.length();
+        int[] r;
+        int[] r1;
+        for (int i = 0; i < length; i++) {//i为假定中心点
+            //奇数回文
+            r=getBestCome2(i,i,s);
+            //偶数回文
+            if (i<length-1){
+                r1 = getBestCome2(i,i+1,s);
+                r = r1[1]-r1[0]>r[1]-r[0]?r1:r;
+            }
+            if (r[1]-r[0]>end-begin){
+                begin = r[0];
+                end = r[1];
+            }
+        }
+        return s.substring(begin,end);
+    }
+
+
+    /**
+     * @Description 初次提交
+     * @param String
+     * @Author cwt
+     * @Date 2019/6/26 19:59
+     */
     public String longestPalindrome(String s) {
         String result = "";
         int length = s.length();
@@ -55,26 +90,52 @@ public class C5 {
 
     /**
      * 外扩至最大回文
-     * @param begin
-     * @param end
+     * @param beginT
+     * @param endT
      * @param s
      * @return
      */
-    private String getBestCome(int begin,int end,String s){
+    private String getBestCome(int beginT,int endT,String s){
 
         char beginStr;
         char endStr;
-        while (begin <= end&&begin>=0&&end<s.length()){
-            beginStr = s.charAt(begin);
-            endStr = s.charAt(end);
+        while (beginT <= endT&&beginT>=0&&endT<s.length()){
+            beginStr = s.charAt(beginT);
+            endStr = s.charAt(endT);
             if (beginStr != endStr) break;
-            begin--;
-            end++;
+            beginT--;
+            endT++;
         }
-        begin++;//回滚至无错下标
-//        end--;//回滚 与 截取时结束坐标+1 对冲公约
-//        return s.substring(begin,end+1);//截取时结束坐标+1
-        return s.substring(begin,end);
+        beginT++;//回滚至无错下标
+//        endT--;//回滚 与 截取时结束坐标+1 对冲公约
+//        return s.substring(beginT,endT+1);//截取时结束坐标+1
+        return s.substring(beginT,endT);
     }
 
+    /**
+     * 外扩至最大回文
+     * @param beginT
+     * @param endT
+     * @param s
+     * @return
+     */
+    private int[] getBestCome2(int beginT,int endT,String s){
+        int[] r = new int[2];
+        char beginStr;
+        char endStr;
+        while (beginT <= endT&&beginT>=0&&endT<s.length()){
+            beginStr = s.charAt(beginT);
+            endStr = s.charAt(endT);
+            if (beginStr != endStr) break;
+            beginT--;
+            endT++;
+        }
+        beginT++;//回滚至无错下标
+//        endT--;//回滚 与 截取时结束坐标+1 对冲公约
+//        return s.substring(beginT,endT+1);//截取时结束坐标+1
+        r[0] = beginT;
+        r[1] = endT;
+
+        return r;
+    }
 }
