@@ -76,7 +76,6 @@ public class C8 {
         str = str.trim();
         int length =  str.length();
         long resultNum = 0;
-        long testNum;
         while (index<length){
             a = str.charAt(index);
 
