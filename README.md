@@ -17,8 +17,8 @@
 | 7       |    整数反转    |  https://leetcode-cn.com/problems/reverse-integer  |  √  |
 | 8       |    字符串转换整数 (atoi)     |  https://leetcode-cn.com/problems/string-to-integer-atoi  |  √  |
 | 9       |    回文数     |  https://leetcode-cn.com/problems/palindrome-number  |  √  |
-| 10      |    正则表达式匹配     |  https://leetcode-cn.com/problems/palindrome-number  |  ×  |
-| 11      |    盛最多水的容器     |  https://leetcode-cn.com/problems/container-with-most-water  |  ×  |
+| 10      |    正则表达式匹配     |  https://leetcode-cn.com/problems/palindrome-number  |  × √ |
+| 11      |    盛最多水的容器     |  https://leetcode-cn.com/problems/container-with-most-water  |  √  |
 | 12      |    整数转罗马数字     | https://leetcode-cn.com/problems/integer-to-roman  |  ×  |
 | 13      |    罗马数字转整数     | https://leetcode-cn.com/problems/roman-to-integer  |  ×  |
 | x       |   未知    |  url  |  √ × |

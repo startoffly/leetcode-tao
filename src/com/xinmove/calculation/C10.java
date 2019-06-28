@@ -57,95 +57,125 @@ import java.util.List;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/regular-expression-matching
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ *
+ * "aab"
+ * "c*a*b"
  **/
 public class C10 {
 
     @Test
     public void test(){
-        String s = "aaaa";
-        String p = "a*a";
+        String s = "aab";
+        String p = "c*a*b";
         System.out.println(isMatch(s,p));
     }
 
     public boolean isMatch(String s, String p) {
-
         if (s == null || p == null) return false;
         if (s.equals(p)) return true;
         if ("".equals(s) || "".equals(p)) return false;
 
-        int pLength = p.length();
-        List<String> pList = new ArrayList<>();
-        String pA = "";
-        char pC;
-        for (int i = 0; i < pLength; i++) {//规则列
-            pC = p.charAt(i);
-            if ("".equals(pA)) {//空规则列
-                if (pC != '*') pA += pC;
-            } else {
-                if (pC != '*') {
-                    pList.add(pA);
-                    pA = "" + pC;
-                }else {
-                    pList.add(pA+'*');
-                    pA = "";
-                }
+        return macth(0,s.length()-1,s,p.length()-1,p);
+    }
 
-            }
-        }
-        if (!"".equals(pA)){
-            pList.add(pA);
-        }
-
+    private boolean macth(int begin,int end,String s,int indexP,String p){
+        if (indexP<0||end<begin||end<0) return false;
         boolean flg = true;
-        int index = 0;
-        char sC;
-        char p0;
-        boolean all = false;//全匹配状态 x*
-        char cAll = '.';
-        for (String pT : pList) {
-
-            p0 = pT.charAt(0);
-            if (pT.length() > 1) {
-                all=true;
-                cAll= p0;//替换
-            } else {
-                if (all){//处理匹配
-                    if ('.'!=p0){
-                        index = s.indexOf(p0,index);
-                        if (index<0){
-                            return false;
-                        }
-                    }else {
-                        for (int i = index; i <s.length() ; i++) {
-                            if (cAll==s.charAt(i))  index++;
-                        }
-                    }
-                    index++;
-                }else {
-                    if(index>=s.length()) return false;
-                    sC = s.charAt(index);
-                    if (p0 != '.' && sC != p0) {
-                        return false;
-                    } else {
-                        index++;
-                    }
-                }
-                all = false;//去除匹配状态
-                cAll = '.';
-            }
-        }
-        if (all){
-            if('.' != cAll){
-                for (int i = index; i <s.length() ; i++) {
-                    if (cAll!=s.charAt(i)) return false;
-                    index++;
-                }
+        char lastCP = '@';
+        char lastP = '@';
+        char pI;
+        int index = end;
+        boolean isAll = false;
+        char sI;
+        for (int i = indexP; i > -1; i--) {//
+            pI = p.charAt(i);
+            if (pI=='*'){
+                isAll = true;
             }else {
-                return true;
+                if (index<0) return false;
+                sI = s.charAt(index);
+                if (isAll){
+                    if (lastP!='@'&&lastP!=lastCP){
+                        for (int j = end; j > begin; j--) {
+                            if (s.charAt(j)==lastP){
+                                return macth(begin,end-1,s,i,p);
+                            }
+                        }
+                        lastP = '@';
+                        isAll = false;
+                    }else {
+                        lastP = pI;
+                    }
+
+                }else {
+                    if (equ(sI,pI)){
+                        index--;
+                    }else {
+                        return false;
+                    }
+                }
             }
+            lastCP = pI;
+
         }
-        flg = index==s.length();
+        if (indexP==0){
+            flg = end==0||isAll;
+        }
         return flg;
     }
 
+    /**
+     * @Description 区域内匹配*
+     * @Return
+     * @Author cwt
+     * @Date 2019/6/28 9:39
+     */
+    private boolean equAll(int begin,int end,String s,char p){
+        if (p=='.'){
+            return true;
+        }else {
+            int length = s.length();
+            for (int i = begin; i < length&&i<=end; i++) {
+                if(p != s.charAt(i)) return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean equ(char a, char p){
+        return p=='.'||a==p;
+    }
+
+    /**
+     * @Description 参考
+     * @Return
+     * @Author cwt
+     * @Date 2019/6/28 11:34
+     */
+    public boolean isMatch2(String s, String p) {
+        int sLen = s.length(), pLen = p.length();
+        boolean[][] memory = new boolean[2][pLen+1];
+        memory[0][0] = true;
+        int cur = 0, pre = 0;
+        for(int i = 0; i <= sLen; i++) {
+            cur = i % 2;
+            pre = (i + 1) % 2;
+            if(i > 1) {
+                for(int j = 0; j <= pLen; j++) {
+                    memory[cur][j] = false;
+                }
+            }
+            for(int j = 1; j <= pLen; j++) {
+                if(p.charAt(j-1) == '*') {
+
+                    memory[cur][j] = memory[cur][j-2] || (i > 0 && (s.charAt(i-1) == p.charAt(j-2) ||
+                            p.charAt(j-2) == '.') && memory[pre][j]);
+                }else {
+                    memory[cur][j] = i > 0 && (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.')
+                            && memory[pre][j-1];
+                }
+            }
+        }
+        return memory[cur][pLen];
+    }
 }
