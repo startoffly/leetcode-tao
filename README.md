@@ -22,9 +22,9 @@
 | 12      |    整数转罗马数字     | https://leetcode-cn.com/problems/integer-to-roman  |  √  |
 | 13      |    罗马数字转整数     | https://leetcode-cn.com/problems/roman-to-integer  |  √  |
 | 14      |    最长公共前缀     | https://leetcode-cn.com/problems/longest-common-prefix  |  √  |
-| 15      |    三数之和     |https://leetcode-cn.com/problems/3sum  |  √  |
-| 16      |    最接近的三数之和     |https://leetcode-cn.com/problems/3sum-closest  |  √  |
-| 17      |    电话号码的字母组合     |https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number  |  √√  |
+| 15      |    三数之和     | https://leetcode-cn.com/problems/3sum  |  √  |
+| 16      |    最接近的三数之和     | https://leetcode-cn.com/problems/3sum-closest  |  √  |
+| 17      |    电话号码的字母组合     | https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number  |  √√  |
 | x       |   未知    |  url  |  √ × |
 
 
