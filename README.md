@@ -25,7 +25,8 @@
 | 15      |    三数之和     | https://leetcode-cn.com/problems/3sum  |  √  |
 | 16      |    最接近的三数之和     | https://leetcode-cn.com/problems/3sum-closest  |  √  |
 | 17      |    电话号码的字母组合     | https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number  |  √√  |
-| 18       |   四数之和    |  https://leetcode-cn.com/problems/4sum  |  × |
+| 18       |   四数之和    |  https://leetcode-cn.com/problems/4sum  |  √ |
+| 19       |   删除链表的倒数第N个节点    | https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list  |  × |
 | x       |   未知    |  url  |  √ × |
 
 
