@@ -31,51 +31,64 @@ public class C19 {
     @Test
     public void runSomeTest(){
         System.out.println("------普通测试------");
-        int[] nodes = {1,2,3,4};//数字342
-        int n = 4;
+        int[] nodes = {1,2,3,4,5};//数字342
+        int n = 1;
         ListNode nodesHead = getNodes(nodes);
-        nodesHead = removeNthFromEnd(nodesHead,n);
-        ListNode node = nodesHead;
 
-        while (node!=null&&node.next!=null){
-            System.out.println("node.val:"+node.val);
+        nodesHead = removeNthFromEndOnece(nodesHead,n);
+
+        while (nodesHead!=null&&nodesHead.next!=null){
+            System.out.println("node.val:"+nodesHead.val);
+            nodesHead = nodesHead.next;
+        }
+        System.out.println("node.val:"+(nodesHead!=null?nodesHead.val:"null"));
+
+    }
+    //解决
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        ListNode node = head;
+        int size = 1;
+        while (node.next!=null){
+            size++;
             node = node.next;
         }
-        System.out.println("node.val:"+(node!=null?node.val:"null"));
-
-    }
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        if (n<1) return head;
-        if (head.next==null) return n==1?null:head;//唯一元素删除
-
-//        int size = remove(head,head.next,0,n);//去头元素
-        if (head.next.next!=null){
-            int size = remove(head,head.next,-1,n);//最低三个元素算法
-            System.out.println("结果："+size);
-        }else {
-            if (n==1){
-                head.next=null;
-                return head;
-            }else {
-                return head.next;
+        int indexN = 0;
+        ListNode lastNode = null;
+        node = head;
+        while (node.next!=null){
+            if(size-n==indexN){
+                break;
             }
+            indexN++;
+            lastNode = node;
+            node = node.next;
         }
-
+        if (lastNode==null) return head.next;
+        lastNode.next = node.next;
         return head;
     }
-    private int remove(ListNode lastNode,ListNode nowNode,int index,int n){
-        if (nowNode!=null){//子元素不为空
-            index =  remove(nowNode,nowNode.next,index,n)+1;
-        }else {
-            index++;
-        }
-        if (index==n){
-            lastNode.next =nowNode == null?null:nowNode.next;
-            System.out.println(n+",删除:"+nowNode.val);
-        }
-        return index;
+
+    //尝试一遍扫描
+    public ListNode removeNthFromEndOnece(ListNode head, int n) {
+        if (head.next==null&&n==1) return null;
+        int[] sub = {-1};//删除点的计数
+        return removeOnce(1,null,head,n,sub);
     }
 
+    private ListNode removeOnce(int index,ListNode listNode,ListNode nowNode,int n,int[] sub){
+        index++;
+        if (nowNode.next!=null){
+            removeOnce(index,nowNode,nowNode.next,n,sub);
+        }else {
+            sub[0] = index-n;
+        }
+        if (index-1==sub[0]){//本节点删除
+            if (listNode==null) return nowNode.next;
+            listNode.next = nowNode.next;
+        }
+        return nowNode;
+    }
 
     public class ListNode {
         int val;
