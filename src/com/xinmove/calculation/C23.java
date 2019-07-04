@@ -26,7 +26,6 @@ import com.xinmove.calculation.vo.ListNode;
 public class C23 {
 
 
-
     public ListNode mergeKLists2(ListNode[] lists) {
         ListNode result = null;
         for (ListNode listNode: lists) {
