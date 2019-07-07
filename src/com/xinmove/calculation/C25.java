@@ -37,9 +37,9 @@ public class C25 {
 
     @Test
     public void test(){
-        ListNode head = ListNode.getNodes(new int[]{1,2,3,4,5,6,7,8,9});
-//        ListNode start  =  reverseOnce(head,3);
-        ListNode start  =  reverseKGroup(head,3);
+        ListNode head = ListNode.getNodes(new int[]{1,2,3,4,5});
+        ListNode start  =  reverseOnce(head,3);
+//        ListNode start  =  reverseKGroup(head,3);
 
         System.out.print("[");
 
@@ -53,8 +53,20 @@ public class C25 {
 
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode newHead = null;
-
-
+        ListNode node = head;
+        ListNode reverseHead = null;
+        ListNode lastNode = null;
+        while(node!=null){
+            System.out.println(node.val);
+            reverseHead = reverseOnce(node,k);
+            if (newHead!=null){
+                lastNode.next = reverseHead;
+            }else {
+                newHead = reverseHead;
+            }
+            lastNode = node;
+            node=node.next;
+        }
         return newHead!=null?newHead:head;
     }
 
@@ -64,6 +76,18 @@ public class C25 {
         ListNode node = head;
         ListNode lastNode = null;
         ListNode nextNode;
+        int index=1;
+        boolean canReverse = false;
+        while (node!=null){//初始判断
+            if (index>=k) {
+                canReverse = true;
+                break;
+            }
+            index++;
+            node = node.next;
+        }
+        if (!canReverse) return head;
+        node = head;
         while (node!=null&&k-->0){
             nextNode = node.next;
             node.next = lastNode;
