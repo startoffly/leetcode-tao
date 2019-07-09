@@ -32,7 +32,12 @@
 | 22       |   括号生成    |  https://leetcode-cn.com/problems/generate-parentheses  |   √ |
 | 23       |   合并K个排序链表    |  https://leetcode-cn.com/problems/merge-k-sorted-lists  |   √ |
 | 24       |   两两交换链表中的节点    |  https://leetcode-cn.com/problems/swap-nodes-in-pairs  |   √ |
-| 25       |   K 个一组翻转链表    |  https://leetcode-cn.com/problems/reverse-nodes-in-k-group  |   × |
+| 25       |   K 个一组翻转链表    |  https://leetcode-cn.com/problems/reverse-nodes-in-k-group  |   √ |
+| 26       |   删除排序数组中的重复项    |  https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array  |  √  |
+| 27       |   移除元素    |  https://leetcode-cn.com/problems/remove-element  |  √ |
+| 28       |   实现strStr函数   |  https://leetcode-cn.com/problems/implement-strstr/submissions  |  √ |
+| 29       |   两数相除    |  https://leetcode-cn.com/problems/divide-two-integers  |  √ × |
+| x       |   未知    |  url  |  √ × |
 | x       |   未知    |  url  |  √ × |
 
 
