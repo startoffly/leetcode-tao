@@ -6,6 +6,13 @@
 --------
 ### 目录
 
+|题目状态|标识|
+| --------  | :-----:  |
+|已解 | √ |
+|已解且较为满意 |√√ |
+|已解但不满意 | √× |
+|未解 |× |
+
 | 题号        | 名字   |  链接  |  进度  |
 | --------  | :-----:  | :----:  | :----:  |
 | 1    | 两数之和 |   https://leetcode-cn.com/problems/two-sum    |  √  |
@@ -17,7 +24,7 @@
 | 7       |    整数反转    |  https://leetcode-cn.com/problems/reverse-integer  |  √  |
 | 8       |    字符串转换整数 (atoi)     |  https://leetcode-cn.com/problems/string-to-integer-atoi  |  √  |
 | 9       |    回文数     |  https://leetcode-cn.com/problems/palindrome-number  |  √  |
-| 10      |    正则表达式匹配     |  https://leetcode-cn.com/problems/palindrome-number  |  × √ |
+| 10      |    正则表达式匹配     |  https://leetcode-cn.com/problems/palindrome-number  |  √ × |
 | 11      |    盛最多水的容器     |  https://leetcode-cn.com/problems/container-with-most-water  |  √  |
 | 12      |    整数转罗马数字     | https://leetcode-cn.com/problems/integer-to-roman  |  √  |
 | 13      |    罗马数字转整数     | https://leetcode-cn.com/problems/roman-to-integer  |  √  |
@@ -38,7 +45,8 @@
 | 28       |   实现strStr函数   |  https://leetcode-cn.com/problems/implement-strstr/submissions  |  √ |
 | 29       |   两数相除    |  https://leetcode-cn.com/problems/divide-two-integers  |  √ × |
 | x       |   未知    |  url  |  √ × |
+| 71       |    简化路径    |  https://leetcode-cn.com/problems/simplify-path  |  √ × |
 | x       |   未知    |  url  |  √ × |
-
-
+| 913       |   猫和老鼠    |  https://leetcode-cn.com/problems/cat-and-mouse  | √ × |
+| x       |   未知    |  url  |  √ × |
 
