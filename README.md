@@ -46,7 +46,9 @@
 | 29       |   两数相除    |  https://leetcode-cn.com/problems/divide-two-integers  |  √ × |
 | x       |   未知    |  url  |  √ × |
 | 71       |    简化路径    |  https://leetcode-cn.com/problems/simplify-path  |  √  |
+| 504       |    七进制数    |  https://leetcode-cn.com/problems/base-7  |  √  |
 | x       |   未知    |  url  |  √ × |
 | 913       |   猫和老鼠    |  https://leetcode-cn.com/problems/cat-and-mouse  | √ × |
+|1309       |   解码字母到整数映射    |  https://leetcode-cn.com/problems/decrypt-string-from-alphabet-to-integer-mapping/  | √ |
 | x       |   未知    |  url  |  √ × |
 
