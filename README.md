@@ -45,7 +45,7 @@
 | 28       |   实现strStr函数   |  https://leetcode-cn.com/problems/implement-strstr/submissions  |  √ |
 | 29       |   两数相除    |  https://leetcode-cn.com/problems/divide-two-integers  |  √ × |
 | x       |   未知    |  url  |  √ × |
-| 71       |    简化路径    |  https://leetcode-cn.com/problems/simplify-path  |  √ × |
+| 71       |    简化路径    |  https://leetcode-cn.com/problems/simplify-path  |  √  |
 | x       |   未知    |  url  |  √ × |
 | 913       |   猫和老鼠    |  https://leetcode-cn.com/problems/cat-and-mouse  | √ × |
 | x       |   未知    |  url  |  √ × |
