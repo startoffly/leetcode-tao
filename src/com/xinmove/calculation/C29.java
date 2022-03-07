@@ -35,40 +35,33 @@ public class C29 {
     public void test(){
 
         System.out.println(divide(10,3));
+        System.out.println(divide(7,-3));
+        System.out.println(divide(10,8));
+        System.out.println(divide(1234124,4));
     }
 
     public int divide(int dividend, int divisor) {
         if (dividend==Integer.MIN_VALUE&&divisor==-1) return Integer.MAX_VALUE;
         if (divisor==1) return dividend;
         if (divisor==-1) return -dividend;
-        int result = 0;
-        if (dividend>0){
-            if (divisor>0){
-                while (dividend>=divisor){
-                    dividend-=divisor;
-                    result++;
-                }
-            }else {
-                while (dividend>=-divisor){
-                    dividend+=divisor;
-                    result--;
-                }
-            }
-        }else {
-            if (divisor>0){
-                while (dividend<=-divisor){
-                    dividend+=divisor;
-                    result--;
-                }
-            }else {
-                while (dividend<=divisor){
-                    dividend-=divisor;
-                    result++;
-                }
+        if (dividend==divisor) return 1;
+        int sum = 2;
+        if (dividend > 0) sum--;
+        if (divisor > 0) sum--;
+        dividend = dividend > 0 ? -dividend : dividend;
+        divisor = divisor > 0 ? -divisor : divisor;
+        int ans = 0;
+        while (dividend <= divisor) {
+            for (int i = 0; i < 32; i++) {
+                dividend -= divisor << i;
+                ans += 1 << i;
+                if (divisor << i + 1 > 0 || (divisor << i + 1) < dividend) break;
             }
         }
-
-        return result;
+        return sum == 1 ? -ans : ans;
     }
+
+
+
 
 }
