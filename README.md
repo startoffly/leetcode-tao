@@ -44,10 +44,11 @@
 | 27       |   移除元素    |  https://leetcode-cn.com/problems/remove-element  |  √ |
 | 28       |   实现strStr函数   |  https://leetcode-cn.com/problems/implement-strstr/submissions  |  √ |
 | 29       |   两数相除    |  https://leetcode-cn.com/problems/divide-two-integers  |  √ × |
-| 30       |   串联所有单词的子串    |  https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/  |  √ × |
+| 30       |   串联所有单词的子串    |  https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/  |  √  |
 | x       |   未知    |  url  |  √ × |
 | 71       |    简化路径    |  https://leetcode-cn.com/problems/simplify-path  |  √  |
 | 504       |    七进制数    |  https://leetcode-cn.com/problems/base-7  |  √  |
+| 798       |   得分最高的最小轮调    |  https://leetcode-cn.com/problems/smallest-rotation-with-highest-score/  |  √ ×  |
 | x       |   未知    |  url  |  √ × |
 | 913       |   猫和老鼠    |  https://leetcode-cn.com/problems/cat-and-mouse  | √ × |
 | 1309       |   解码字母到整数映射    |  https://leetcode-cn.com/problems/decrypt-string-from-alphabet-to-integer-mapping/  | √ |
